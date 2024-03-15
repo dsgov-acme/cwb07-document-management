@@ -44,25 +44,25 @@ env:
   PUBSUB_EMULATOR_HOST: false # set actual "host:port" to enable or false to disable
   PUBSUB_EMULATOR_ENABLED: false
   # cwb07-events publisher topics separated by comma
-  PUBLISHER_TOPICS: projects/cwb07-prod/topics/APPLICATION_ROLE_REPORTING
+  PUBLISHER_TOPICS: projects/cwb07-prod-b74b/topics/APPLICATION_ROLE_REPORTING
   DOCUMENT_QUALITY_PROCESSOR_ID: "bb58dd3cf9ad3d9f"
   DOCUMENT_ID_PROOFING_PROCESSOR_ID: "c29b0953a527c2d7"
   # end of infrastructure selector configs
   ALLOWED_ORIGINS: "http://localhost:4200, http://localhost:4201, https://api.cwb07.dsgov.demo.nuvalence.io, https://agency.cwb07.dsgov.demo.nuvalence.io, https://public.cwb07.dsgov.demo.nuvalence.io, https://employer.cwb07.dsgov.demo.nuvalence.io"
-  GCP_PROJECT_ID: "cwb07-prod"
+  GCP_PROJECT_ID: "cwb07-prod-b74b"
   CERBOS_URI: "127.0.0.1:3592"
   DB_CONNECTION_URL: "jdbc:postgresql://127.0.0.1:5432/cwb07-prod-document-management-db"
-  DB_USERNAME: "${sm://projects/cwb07-prod/secrets/cwb07-prod-db-user/versions/latest}"
-  DB_PASSWORD: "${sm://projects/cwb07-prod/secrets/cwb07-prod-db-pass/versions/latest}"
-  SELF_SIGN_PUBLIC_KEY: "${sm://projects/cwb07-prod/secrets/cwb07-self-signed-token-public-key/versions/latest}"
-  SELF_SIGN_PRIVATE_KEY: "${sm://projects/cwb07-prod/secrets/cwb07-self-signed-token-private-key/versions/latest}"
+  DB_USERNAME: "${sm://projects/cwb07-prod-b74b/secrets/cwb07-prod-db-user/versions/latest}"
+  DB_PASSWORD: "${sm://projects/cwb07-prod-b74b/secrets/cwb07-prod-db-pass/versions/latest}"
+  SELF_SIGN_PUBLIC_KEY: "${sm://projects/cwb07-prod-b74b/secrets/cwb07-self-signed-token-public-key/versions/latest}"
+  SELF_SIGN_PRIVATE_KEY: "${sm://projects/cwb07-prod-b74b/secrets/cwb07-self-signed-token-private-key/versions/latest}"
   USER_MANAGEMENT_BASE_URL: "http://cwb07-user-management/um"
-  PUBSUB_CLAMAV_TOPIC: "projects/cwb07-prod/topics/NEW_FILE_UPLOAD"
-  PUBSUB_DOCUMENT_PROCESSING_TOPIC: "projects/cwb07-prod/topics/DOCUMENT_PROCESSING_REQUESTS"
-  PUBSUB_DOCUMENT_PROCESSING_RESULT_TOPIC: "projects/cwb07-prod/topics/DOCUMENT_PROCESSING_RESULTS"
-  PUBSUB_CLAMAV_SUBSCRIPTION: "projects/cwb07-prod/subscriptions/NEW_FILE_UPLOAD_SUBSCRIPTION"
-  PUBSUB_DOCUMENT_PROCESSING_SUBSCRIPTION: "projects/cwb07-prod/subscriptions/DOCUMENT_PROCESSING_SUBSCRIPTION"
-  PUBSUB_DOCUMENT_PROCESSING_RESULT_DEAD_LETTER_TOPIC: "projects/cwb07-prod/topics/DOCUMENT_PROCESSING_DEAD_LETTER"
+  PUBSUB_CLAMAV_TOPIC: "projects/cwb07-prod-b74b/topics/NEW_FILE_UPLOAD"
+  PUBSUB_DOCUMENT_PROCESSING_TOPIC: "projects/cwb07-prod-b74b/topics/DOCUMENT_PROCESSING_REQUESTS"
+  PUBSUB_DOCUMENT_PROCESSING_RESULT_TOPIC: "projects/cwb07-prod-b74b/topics/DOCUMENT_PROCESSING_RESULTS"
+  PUBSUB_CLAMAV_SUBSCRIPTION: "projects/cwb07-prod-b74b/subscriptions/NEW_FILE_UPLOAD_SUBSCRIPTION"
+  PUBSUB_DOCUMENT_PROCESSING_SUBSCRIPTION: "projects/cwb07-prod-b74b/subscriptions/DOCUMENT_PROCESSING_SUBSCRIPTION"
+  PUBSUB_DOCUMENT_PROCESSING_RESULT_DEAD_LETTER_TOPIC: "projects/cwb07-prod-b74b/topics/DOCUMENT_PROCESSING_DEAD_LETTER"
   UNSCANNED_BUCKET_NAME: cwb07-prod-unscanned
   QUARANTINED_BUCKET_NAME: cwb07-prod-quarantined
   SCANNED_BUCKET_NAME: cwb07-prod-scanned

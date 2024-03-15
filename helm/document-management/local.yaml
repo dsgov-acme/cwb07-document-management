@@ -71,7 +71,7 @@ env:
   PUBSUB_EMULATOR_HOST: "pubsub-emulator-service:8085" # set actual "host:port" to enable or false to disable
   PUBSUB_EMULATOR_ENABLED: true
   # cwb07-events publisher topics separated by comma
-  PUBLISHER_TOPICS: projects/cwb07-dev/topics/APPLICATION_ROLE_REPORTING
+  PUBLISHER_TOPICS: projects/cwb07-dev-ac55/topics/APPLICATION_ROLE_REPORTING
   DOCUMENT_QUALITY_PROCESSOR_ID: "fdb5cf560a684afa"
   DOCUMENT_ID_PROOFING_PROCESSOR_ID: "e2e0b9bcf0d940dd"
   # end of infrastructure selector configs
@@ -79,19 +79,19 @@ env:
   DB_CONNECTION_URL: "jdbc:postgresql://document-management-postgres:5432/local-document-management-db"
   DB_USERNAME: "root"
   DB_PASSWORD: "root"
-  GCP_PROJECT_ID: "cwb07-dev"
+  GCP_PROJECT_ID: "cwb07-dev-ac55"
   CERBOS_URI: "127.0.0.1:3592"
-  SELF_SIGN_PUBLIC_KEY: "${sm://projects/cwb07-dev/secrets/cwb07-self-signed-token-public-key/versions/latest}"
-  SELF_SIGN_PRIVATE_KEY: "${sm://projects/cwb07-dev/secrets/cwb07-self-signed-token-private-key/versions/latest}"
+  SELF_SIGN_PUBLIC_KEY: "${sm://projects/cwb07-dev-ac55/secrets/cwb07-self-signed-token-public-key/versions/latest}"
+  SELF_SIGN_PRIVATE_KEY: "${sm://projects/cwb07-dev-ac55/secrets/cwb07-self-signed-token-private-key/versions/latest}"
   USER_MANAGEMENT_BASE_URL: "http://user-management/um"
-  PUBSUB_CLAMAV_TOPIC: "projects/cwb07-dev/topics/NEW_FILE_UPLOAD"
-  PUBSUB_DOCUMENT_PROCESSING_TOPIC: "projects/cwb07-dev/topics/DOCUMENT_PROCESSING_REQUESTS"
-  PUBSUB_DOCUMENT_PROCESSING_RESULT_TOPIC: "projects/cwb07-dev/topics/DOCUMENT_PROCESSING_RESULTS"
-  PUBSUB_CLAMAV_SUBSCRIPTION: "projects/cwb07-dev/subscriptions/NEW_FILE_UPLOAD_SUBSCRIPTION"
-  PUBSUB_DOCUMENT_PROCESSING_SUBSCRIPTION: "projects/cwb07-dev/subscriptions/DOCUMENT_PROCESSING_SUBSCRIPTION"
-  PUBSUB_DOCUMENT_PROCESSING_RESULT_DEAD_LETTER_TOPIC: "projects/cwb07-dev/topics/DOCUMENT_PROCESSING_DEAD_LETTER"
-  EVENTS_DOCUMENT_PROCESSING_TOPIC: "projects/cwb07-dev/topics/DOCUMENT_PROCESSING_INITIATION"
-  EVENTS_DOCUMENT_PROCESSING_SUBSCRIPTION: "projects/cwb07-dev/subscriptions/DOCUMENT_PROCESSING_INITIATION_SUBSCRIPTION"
+  PUBSUB_CLAMAV_TOPIC: "projects/cwb07-dev-ac55/topics/NEW_FILE_UPLOAD"
+  PUBSUB_DOCUMENT_PROCESSING_TOPIC: "projects/cwb07-dev-ac55/topics/DOCUMENT_PROCESSING_REQUESTS"
+  PUBSUB_DOCUMENT_PROCESSING_RESULT_TOPIC: "projects/cwb07-dev-ac55/topics/DOCUMENT_PROCESSING_RESULTS"
+  PUBSUB_CLAMAV_SUBSCRIPTION: "projects/cwb07-dev-ac55/subscriptions/NEW_FILE_UPLOAD_SUBSCRIPTION"
+  PUBSUB_DOCUMENT_PROCESSING_SUBSCRIPTION: "projects/cwb07-dev-ac55/subscriptions/DOCUMENT_PROCESSING_SUBSCRIPTION"
+  PUBSUB_DOCUMENT_PROCESSING_RESULT_DEAD_LETTER_TOPIC: "projects/cwb07-dev-ac55/topics/DOCUMENT_PROCESSING_DEAD_LETTER"
+  EVENTS_DOCUMENT_PROCESSING_TOPIC: "projects/cwb07-dev-ac55/topics/DOCUMENT_PROCESSING_INITIATION"
+  EVENTS_DOCUMENT_PROCESSING_SUBSCRIPTION: "projects/cwb07-dev-ac55/subscriptions/DOCUMENT_PROCESSING_INITIATION_SUBSCRIPTION"
   UNSCANNED_BUCKET_NAME: cwb07-dev-unscanned
   QUARANTINED_BUCKET_NAME: cwb07-dev-quarantined
   SCANNED_BUCKET_NAME: cwb07-dev-scanned
