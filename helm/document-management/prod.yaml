@@ -1,0 +1,93 @@
+environment: "prod"
+serviceAccountName: cwb07-sa
+createIngress: false
+isGke: true
+
+resources:
+  documentManagement:
+    requests:
+      cpu: 100m
+      memory: 1Gi
+    limits:
+      memory: 2Gi
+  cerbos:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 256Mi
+  clamavService:
+    requests:
+      cpu: 100m
+      memory: 3Gi
+    limits:
+      memory: 4Gi
+  clamavMirror:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      memory: 512Mi
+
+clamav:
+  persistentStorage:
+    size: 3Gi
+
+net:
+  host: "api.cwb07.dsgov.demo.nuvalence.io"
+
+env:
+  # start infrastructure selector configs
+  CLAMAV_ENABLED: true
+  DOCUMENT_PROCESSING_ENABLED: true
+  GOOGLE_STORAGE_EMULATED: false
+  PUBSUB_EMULATOR_HOST: false # set actual "host:port" to enable or false to disable
+  PUBSUB_EMULATOR_ENABLED: false
+  # cwb07-events publisher topics separated by comma
+  PUBLISHER_TOPICS: projects/cwb07-prod/topics/APPLICATION_ROLE_REPORTING
+  DOCUMENT_QUALITY_PROCESSOR_ID: "bb58dd3cf9ad3d9f"
+  DOCUMENT_ID_PROOFING_PROCESSOR_ID: "c29b0953a527c2d7"
+  # end of infrastructure selector configs
+  ALLOWED_ORIGINS: "http://localhost:4200, http://localhost:4201, https://api.cwb07.dsgov.demo.nuvalence.io, https://agency.cwb07.dsgov.demo.nuvalence.io, https://public.cwb07.dsgov.demo.nuvalence.io, https://employer.cwb07.dsgov.demo.nuvalence.io"
+  GCP_PROJECT_ID: "cwb07-prod"
+  CERBOS_URI: "127.0.0.1:3592"
+  DB_CONNECTION_URL: "jdbc:postgresql://127.0.0.1:5432/cwb07-prod-document-management-db"
+  DB_USERNAME: "${sm://projects/cwb07-prod/secrets/cwb07-prod-db-user/versions/latest}"
+  DB_PASSWORD: "${sm://projects/cwb07-prod/secrets/cwb07-prod-db-pass/versions/latest}"
+  SELF_SIGN_PUBLIC_KEY: "${sm://projects/cwb07-prod/secrets/cwb07-self-signed-token-public-key/versions/latest}"
+  SELF_SIGN_PRIVATE_KEY: "${sm://projects/cwb07-prod/secrets/cwb07-self-signed-token-private-key/versions/latest}"
+  USER_MANAGEMENT_BASE_URL: "http://cwb07-user-management/um"
+  PUBSUB_CLAMAV_TOPIC: "projects/cwb07-prod/topics/NEW_FILE_UPLOAD"
+  PUBSUB_DOCUMENT_PROCESSING_TOPIC: "projects/cwb07-prod/topics/DOCUMENT_PROCESSING_REQUESTS"
+  PUBSUB_DOCUMENT_PROCESSING_RESULT_TOPIC: "projects/cwb07-prod/topics/DOCUMENT_PROCESSING_RESULTS"
+  PUBSUB_CLAMAV_SUBSCRIPTION: "projects/cwb07-prod/subscriptions/NEW_FILE_UPLOAD_SUBSCRIPTION"
+  PUBSUB_DOCUMENT_PROCESSING_SUBSCRIPTION: "projects/cwb07-prod/subscriptions/DOCUMENT_PROCESSING_SUBSCRIPTION"
+  PUBSUB_DOCUMENT_PROCESSING_RESULT_DEAD_LETTER_TOPIC: "projects/cwb07-prod/topics/DOCUMENT_PROCESSING_DEAD_LETTER"
+  UNSCANNED_BUCKET_NAME: cwb07-prod-unscanned
+  QUARANTINED_BUCKET_NAME: cwb07-prod-quarantined
+  SCANNED_BUCKET_NAME: cwb07-prod-scanned
+  STORAGE_PROVIDER: "google"
+  ALLOWED_MIME_TYPES:
+    - "image/gif"
+    - "image/jpeg"
+    - "image/png"
+    - "image/heic"
+    - "application/pdf"
+    - "text/csv"
+    - "application/msword"
+    - "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    - "application/rtf"
+    - "text/plain"
+    - "application/vnd.ms-excel"
+    - "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    - "application/vnd.ms-xpsdocument"
+    - "application/vnd.wordperfect"
+    - "application/vnd.oasis.opendocument.text"
+    - "image/svg+xml"
+    - "image/tiff"
+  ALLOWED_OCTET_STREAM_EXTENSIONS:
+    - ".mpa"
+  TOKEN_PRIVATE_KEY_SECRET: "cwb07-self-signed-token-private-key"
+  TOKEN_ISSUER: "cwb07"
+  TOKEN_PRIVATE_KEY_VERSION: "latest"
+  OTEL_SAMPLER_PROBABILITY: 1.0 # valid values: [0.0 - 1.0]
