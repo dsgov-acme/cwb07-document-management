@@ -1,0 +1,32 @@
+{{- if .Values.env.CLAMAV_ENABLED }}
+{{- if ne .Values.environment "local" }}
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: clamavdb-nfs-pv
+  namespace: {{ .Values.namespace | default "dsgov" }}
+spec:
+  persistentVolumeReclaimPolicy: Delete
+  capacity:
+    storage: {{ .Values.clamav.persistentStorage.size }}
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    server: clamavdb-nfs-server.{{ .Values.namespace | default "dsgov" }}.svc.cluster.local
+    path: "/"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: clamavdb-nfs-pvc
+  namespace: {{ .Values.namespace | default "dsgov" }}
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: {{ .Values.clamav.persistentStorage.size }}
+  volumeName: clamavdb-nfs-pv
+{{- end }}
+{{- end }}
